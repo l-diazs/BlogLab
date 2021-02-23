@@ -1,0 +1,9 @@
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\bin\Debug\netcoreapp3.1\BlogLab.Models.deps.json
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\bin\Debug\netcoreapp3.1\BlogLab.Models.dll
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\bin\Debug\netcoreapp3.1\BlogLab.Models.pdb
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\obj\Debug\netcoreapp3.1\BlogLab.Models.csprojAssemblyReference.cache
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\obj\Debug\netcoreapp3.1\BlogLab.Models.AssemblyInfoInputs.cache
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\obj\Debug\netcoreapp3.1\BlogLab.Models.AssemblyInfo.cs
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\obj\Debug\netcoreapp3.1\BlogLab.Models.csproj.CoreCompileInputs.cache
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\obj\Debug\netcoreapp3.1\BlogLab.Models.dll
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Models\obj\Debug\netcoreapp3.1\BlogLab.Models.pdb

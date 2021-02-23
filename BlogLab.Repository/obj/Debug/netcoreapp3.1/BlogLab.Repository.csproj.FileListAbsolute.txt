@@ -1,0 +1,12 @@
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.csprojAssemblyReference.cache
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.AssemblyInfoInputs.cache
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.AssemblyInfo.cs
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.csproj.CoreCompileInputs.cache
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\bin\Debug\netcoreapp3.1\BlogLab.Repository.deps.json
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\bin\Debug\netcoreapp3.1\BlogLab.Repository.dll
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\bin\Debug\netcoreapp3.1\BlogLab.Repository.pdb
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\bin\Debug\netcoreapp3.1\BlogLab.Models.dll
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\bin\Debug\netcoreapp3.1\BlogLab.Models.pdb
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.csproj.CopyComplete
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.dll
+C:\Users\LuisDS\Desktop\BlogLab\BlogLab.Repository\obj\Debug\netcoreapp3.1\BlogLab.Repository.pdb

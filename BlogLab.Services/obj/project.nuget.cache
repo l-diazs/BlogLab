@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "e0mawL3AcnxxRJc3cUzLo/cvhfoGmHaoNRLRJ1mS1mW/k6RI7IuUS7JR51SThVyaxgav76o97064yH4qGkEEXw==",
+  "dgSpecHash": "2nuGZMDaVClrwjAHHShGLSJvwfmKdOHVrHTiEI3UtnTXlDfH7l6BVGlfSps8vHAQKeJTki9V78H074F8mgIQYQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\LuisDS\\Desktop\\BlogLab\\BlogLab.Services\\BlogLab.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LuisDS\\.nuget\\packages\\cloudinarydotnet\\1.11.0\\cloudinarydotnet.1.11.0.nupkg.sha512",
-    "C:\\Users\\LuisDS\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.3\\microsoft.aspnetcore.http.features.5.0.3.nupkg.sha512",
+    "C:\\Users\\LuisDS\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.0\\microsoft.aspnetcore.http.features.5.0.0.nupkg.sha512",
     "C:\\Users\\LuisDS\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\LuisDS\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\LuisDS\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
@@ -16,7 +16,7 @@
     "C:\\Users\\LuisDS\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\LuisDS\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\LuisDS\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.8.0\\system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
-    "C:\\Users\\LuisDS\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\LuisDS\\.nuget\\packages\\system.io.pipelines\\5.0.0\\system.io.pipelines.5.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []

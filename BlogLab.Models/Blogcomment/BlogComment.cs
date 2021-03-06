@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlogLab.Models.Blogcomment
+namespace BlogLab.Models.BlogComment
 {
     public class BlogComment : BlogCommentCreate
     {

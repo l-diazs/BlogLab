@@ -42,7 +42,7 @@ namespace BlogLab.Repository
                 user.PasswordHash
                 );
 
-            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"))) 
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync(cancellationToken);
 

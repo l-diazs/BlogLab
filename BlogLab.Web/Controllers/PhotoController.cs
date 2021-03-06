@@ -1,14 +1,14 @@
-﻿using BlogLab.Models.Photo;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BlogLab.Models.Photo;
 using BlogLab.Repository;
 using BlogLab.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using Microsoft.IdentityModel.JsonWebTokens;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogLab.Web.Controllers
 {
@@ -54,7 +54,7 @@ namespace BlogLab.Web.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task <ActionResult<List<Photo>>> GetByApplicationUserId()
+        public async Task<ActionResult<List<Photo>>> GetByApplicationUserId()
         {
             int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
 
@@ -73,7 +73,7 @@ namespace BlogLab.Web.Controllers
 
         [Authorize]
         [HttpDelete("{photoId}")]
-        public async Task<ActionResult> Delete (int photoId)
+        public async Task<ActionResult<int>> Delete(int photoId)
         {
             int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
 
@@ -81,29 +81,29 @@ namespace BlogLab.Web.Controllers
 
             if (foundPhoto != null)
             {
-                if(foundPhoto.ApplicationUserId == applicationUserId )
+                if (foundPhoto.ApplicationUserId == applicationUserId)
                 {
                     var blogs = await _blogRepository.GetAllByUserIdAsync(applicationUserId);
 
                     var usedInBlog = blogs.Any(b => b.PhotoId == photoId);
 
-                    if (usedInBlog) return BadRequest("Cannot remove  photo as it is being used in one or more published blog");
+                    if (usedInBlog) return BadRequest("Cannot remove photo as it is being used in published blog(s).");
 
                     var deleteResult = await _photoService.DeletePhotoAsync(foundPhoto.PublicId);
 
                     if (deleteResult.Error != null) return BadRequest(deleteResult.Error.Message);
 
-                    var affectedRows = await _photoRepository.DeleteAsync(foundPhoto.PhotoId);
+                    var affectedRows = await _photoRepository.DeletetAsync(foundPhoto.PhotoId);
 
                     return Ok(affectedRows);
                 } 
-                else 
+                else
                 {
-                    return BadRequest("Photo was not uploaded by the current user");
+                    return BadRequest("Photo was not uploaded by the current user.");
                 }
             }
 
-            return BadRequest("Photo does not exist");
+            return BadRequest("Photo does not exist.");
         }
     }
 }

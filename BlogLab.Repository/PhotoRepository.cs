@@ -20,9 +20,9 @@ namespace BlogLab.Repository
             _config = config;
         }
 
-        public async Task<int> DeleteAsync(int photoId)
+        public async Task<int> DeletetAsync(int photoId)
         {
-            int affectedRows=0;
+            int affectedRows = 0;
 
             using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -52,6 +52,7 @@ namespace BlogLab.Repository
             }
 
             return photos.ToList();
+
         }
 
         public async Task<Photo> GetAsync(int photoId)
@@ -64,7 +65,7 @@ namespace BlogLab.Repository
 
                 photo = await connection.QueryFirstOrDefaultAsync<Photo>(
                     "Photo_Get",
-                    new { PhotoId = photoId },
+                    new { PhotoId = photoId},
                     commandType: CommandType.StoredProcedure);
             }
 
@@ -98,7 +99,6 @@ namespace BlogLab.Repository
             Photo photo = await GetAsync(newPhotoId);
 
             return photo;
-
         }
     }
 }

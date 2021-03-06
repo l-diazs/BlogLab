@@ -1,4 +1,4 @@
-﻿using BlogLab.Models.Blogcomment;
+﻿using BlogLab.Models.BlogComment;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -19,6 +19,7 @@ namespace BlogLab.Repository
         {
             _config = config;
         }
+
         public async Task<int> DeleteAsync(int blogCommentId)
         {
             int affectedRows = 0;
@@ -38,7 +39,7 @@ namespace BlogLab.Repository
 
         public async Task<List<BlogComment>> GetAllAsync(int blogId)
         {
-            IEnumerable<BlogComment> blogComments   ;
+            IEnumerable<BlogComment> blogComments;
 
             using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -46,7 +47,7 @@ namespace BlogLab.Repository
 
                 blogComments = await connection.QueryAsync<BlogComment>(
                     "BlogComment_GetAll",
-                    new { BlogId = blogId },
+                    new { BlogId = blogId},
                     commandType: CommandType.StoredProcedure);
             }
 
@@ -73,13 +74,13 @@ namespace BlogLab.Repository
         public async Task<BlogComment> UpsertAsync(BlogCommentCreate blogCommentCreate, int applicationUserId)
         {
             var dataTable = new DataTable();
-            dataTable.Columns.Add("BlogcommentId", typeof(int));
-            dataTable.Columns.Add("ParentBlogcommentId", typeof(int));
+            dataTable.Columns.Add("BlogCommentId", typeof(int));
+            dataTable.Columns.Add("ParentBlogCommentId", typeof(int));
             dataTable.Columns.Add("BlogId", typeof(int));
             dataTable.Columns.Add("Content", typeof(string));
 
             dataTable.Rows.Add(
-                blogCommentCreate.BlogCommentId, 
+                blogCommentCreate.BlogCommentId,
                 blogCommentCreate.ParentBlogCommentId, 
                 blogCommentCreate.BlogId,
                 blogCommentCreate.Content);
@@ -93,7 +94,7 @@ namespace BlogLab.Repository
                 newBlogCommentId = await connection.ExecuteScalarAsync<int?>(
                     "BlogComment_Upsert",
                     new { 
-                        BlogComment = dataTable.AsTableValuedParameter("dbo.BlogCommentType"), 
+                        BlogComment = dataTable.AsTableValuedParameter("dbo.BlogCommentType"),
                         ApplicationUserId = applicationUserId
                     },
                     commandType: CommandType.StoredProcedure);

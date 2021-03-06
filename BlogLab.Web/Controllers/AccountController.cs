@@ -1,12 +1,12 @@
-﻿using BlogLab.Models.Account;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BlogLab.Models.Account;
 using BlogLab.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogLab.Web.Controllers
 {
@@ -27,7 +27,7 @@ namespace BlogLab.Web.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        //                                     http://localhost:5000/api/Account/register [Post]
+
         [HttpPost("register")]
         public async Task<ActionResult<ApplicationUser>> Register(ApplicationUserCreate applicationUserCreate)
         {
@@ -42,7 +42,9 @@ namespace BlogLab.Web.Controllers
 
             if (result.Succeeded)
             {
-                ApplicationUser applicationuser = new ApplicationUser()
+                applicationUserIdentity = await _userManager.FindByNameAsync(applicationUserCreate.Username);
+
+                ApplicationUser applicationUser = new ApplicationUser()
                 {
                     ApplicationUserId = applicationUserIdentity.ApplicationUserId,
                     Username = applicationUserIdentity.Username,
@@ -50,25 +52,25 @@ namespace BlogLab.Web.Controllers
                     Fullname = applicationUserIdentity.Fullname,
                     Token = _tokenService.CreateToken(applicationUserIdentity)
                 };
-                
-                return Ok(applicationuser);
+
+                return Ok(applicationUser);
             }
 
             return BadRequest(result.Errors);
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<ApplicationUser>> Login (ApplicationUserLogin applicationUserLogin)
+        public async Task<ActionResult<ApplicationUser>> Login(ApplicationUserLogin applicationUserLogin)
         {
             var applicationUserIdentity = await _userManager.FindByNameAsync(applicationUserLogin.Username);
 
-            if(applicationUserIdentity != null)
+            if (applicationUserIdentity != null)
             {
                 var result = await _signInManager.CheckPasswordSignInAsync(
                     applicationUserIdentity,
                     applicationUserLogin.Password, false);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     ApplicationUser applicationUser = new ApplicationUser
                     {
@@ -83,7 +85,7 @@ namespace BlogLab.Web.Controllers
                 }
             }
 
-            return BadRequest("Invalid login attempt");
+            return BadRequest("Invalid login attempt.");
         }
     }
 }

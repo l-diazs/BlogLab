@@ -1,13 +1,13 @@
-﻿using BlogLab.Models.Blog;
-using BlogLab.Repository;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogLab.Models.Blog;
+using BlogLab.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BlogLab.Web.Controllers
 {
@@ -36,11 +36,11 @@ namespace BlogLab.Web.Controllers
 
                 if (photo.ApplicationUserId != applicationUserId)
                 {
-                    return BadRequest("You did not upload the photo");
+                    return BadRequest("You did not upload the photo.");
                 }
             }
 
-            var blog = _blogRepository.UpsertAsync(blogCreate, applicationUserId);
+            var blog = await _blogRepository.UpsertAsync(blogCreate, applicationUserId);
 
             return Ok(blog);
         }
@@ -70,7 +70,7 @@ namespace BlogLab.Web.Controllers
         }
 
         [HttpGet("famous")]
-        public async Task<ActionResult<List<Blog>>> GetAllfamous()
+        public async Task<ActionResult<List<Blog>>> GetAllFamous()
         {
             var blogs = await _blogRepository.GetAllFamousAsync();
 
@@ -85,7 +85,7 @@ namespace BlogLab.Web.Controllers
 
             var foundBlog = await _blogRepository.GetAsync(blogId);
 
-            if (foundBlog == null) return BadRequest("Blog does not exist");
+            if (foundBlog == null) return BadRequest("Blog does not exist.");
 
             if (foundBlog.ApplicationUserId == applicationUserId)
             {
@@ -95,7 +95,7 @@ namespace BlogLab.Web.Controllers
             }
             else
             {
-                return BadRequest("You did not create this blog");
+                return BadRequest("You didn't create this blog.");
             }
         }
 

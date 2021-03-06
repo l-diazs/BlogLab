@@ -14,6 +14,7 @@ namespace BlogLab.Repository
     public class BlogRepository : IBlogRepository
     {
         private readonly IConfiguration _config;
+
         public BlogRepository(IConfiguration config)
         {
             _config = config;
@@ -36,7 +37,6 @@ namespace BlogLab.Repository
             return affectedRows;
         }
 
-
         public async Task<PagedResults<Blog>> GetAllAsync(BlogPaging blogPaging)
         {
             var results = new PagedResults<Blog>();
@@ -46,13 +46,13 @@ namespace BlogLab.Repository
                 await connection.OpenAsync();
 
                 using (var multi = await connection.QueryMultipleAsync("Blog_GetAll",
-                    new {
-                        Offset = (blogPaging.Page -1 )* blogPaging.PageSize,
+                    new { 
+                        Offset = (blogPaging.Page - 1) * blogPaging.PageSize,
                         PageSize = blogPaging.PageSize
                     }, 
-                    commandType: CommandType.StoredProcedure)) 
+                    commandType: CommandType.StoredProcedure))
                 {
-                    results.items = multi.Read<Blog>();
+                    results.Items = multi.Read<Blog>();
 
                     results.TotalCount = multi.ReadFirst<int>();
                 }
@@ -128,7 +128,7 @@ namespace BlogLab.Repository
             {
                 await connection.OpenAsync();
 
-                newBlogId = await connection.ExecuteScalarAsync<int>(
+                newBlogId = await connection.ExecuteScalarAsync<int?>(
                     "Blog_Upsert",
                     new { Blog = dataTable.AsTableValuedParameter("dbo.BlogType"), ApplicationUserId = applicationUserId },
                     commandType: CommandType.StoredProcedure

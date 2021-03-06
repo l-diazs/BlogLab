@@ -1,4 +1,4 @@
-﻿using BlogLab.Models.Blogcomment;
+﻿using BlogLab.Models.BlogComment;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -52,9 +52,13 @@ export class AccountService {
     this.currentUserSubject$.next(user);
   }
 
+  public get currentUserValue(): ApplicationUser {
+    return this.currentUserSubject$.value;
+  }
+
   logout() {
     localStorage.removeItem('blogLab-currentUser');
-    //this.currentUserSubject$.next(null);
+    //this.currentUserSubject$.next(null); //uncomment gives error
   } 
 
 }

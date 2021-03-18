@@ -13,15 +13,14 @@ import { environment } from 'src/environments/environment';
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(
-    private AccountService: AccountService
+    private accountService: AccountService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const currentUser = this.AccountService.currentUserValue
-    const isLoggedIn = currentUser && currentUser.token;
+    const currentUser = this.accountService.currentUserValue;
     const isApiUrl = request.url.startsWith(environment.webApi);
-
-    if (isLoggedIn && isApiUrl) {
+    
+    if (this.accountService.isLoggedIn() && isApiUrl) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.token}`

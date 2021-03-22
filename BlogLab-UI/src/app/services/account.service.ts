@@ -64,7 +64,7 @@ export class AccountService {
 
   logout() {
     localStorage.removeItem('blogLab-currentUser');
-    //this.currentUserSubject$.next(null); //uncomment gives error
+    this.currentUserSubject$.next(null); //uncomment gives error
   } 
 
 }

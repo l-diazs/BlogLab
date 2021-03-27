@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable,throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../services/account.service';
 import { catchError } from 'rxjs/operators';
@@ -44,7 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       })
     );
   }
- 
+
   handle400Error(error: any) {
     if (!!error.error && Array.isArray(error.error)) {
       let errorMessage = '';
@@ -92,6 +92,5 @@ export class ErrorInterceptor implements HttpInterceptor {
   handleUnexpectedError(error: any) {
     this.toastr.error('Something unexpected happened.');
     console.log(error);
-  } 
-  
+  }
 }

@@ -15,14 +15,14 @@ export class AccountService {
   private currentUserSubject$: BehaviorSubject<ApplicationUser>
 
   constructor(
-    private http: HttpClient 
+    private http: HttpClient
   ) { 
-    this.currentUserSubject$ = new BehaviorSubject<ApplicationUser>(JSON.parse(localStorage.getItem('blogLab-currentUser') || '{}'));
+    this.currentUserSubject$ = new BehaviorSubject<ApplicationUser>(JSON.parse(localStorage.getItem('blogLab-currentUser')));
   }
 
   login(model: ApplicationUserLogin) : Observable<ApplicationUser>  {
     return this.http.post(`${environment.webApi}/Account/login`, model).pipe(
-      map((user : any) => {
+      map((user : ApplicationUser) => {
 
         if (user) {
           localStorage.setItem('blogLab-currentUser', JSON.stringify(user));
@@ -36,7 +36,7 @@ export class AccountService {
 
   register(model: ApplicationUserCreate) : Observable<ApplicationUser> {
     return this.http.post(`${environment.webApi}/Account/register`, model).pipe(
-      map((user : any) => {
+      map((user : ApplicationUser) => {
 
         if (user) {
           localStorage.setItem('blogLab-currentUser', JSON.stringify(user));
@@ -56,6 +56,10 @@ export class AccountService {
     return this.currentUserSubject$.value;
   }
 
+  public givenUserIsLoggedIn(username: string) {
+    return this.isLoggedIn() && this.currentUserValue.username === username;
+  }
+
   public isLoggedIn() {
     const currentUser = this.currentUserValue;
     const isLoggedIn = !!currentUser && !!currentUser.token;
@@ -64,7 +68,6 @@ export class AccountService {
 
   logout() {
     localStorage.removeItem('blogLab-currentUser');
-    this.currentUserSubject$.next(null); //uncomment gives error
-  } 
-
+    this.currentUserSubject$.next(null);
+  }
 }

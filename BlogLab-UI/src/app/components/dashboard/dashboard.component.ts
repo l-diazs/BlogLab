@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userBlogs = [];
 
-    let currentApplicationUserId = this.accountService.currentUserValue.ApplicationUserId;
-    console.log("[log]currentUserValue:"+this.accountService.currentUserValue);
+    let currentApplicationUserId = this.accountService.currentUserValue.applicationUserId;
+
     this.blogService.getByApplicationUserId(currentApplicationUserId).subscribe(userBlogs => {
       this.userBlogs = userBlogs;
     });
